@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://3.36.241.5:54264/sys?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
+    username: '0000'
+    password: '0000'
+
+# mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+#
+#spirng:
+#  jpa:
+#    database: mysql
+#    hibernate:
+#      ddl-auto: update
+#    generate-ddl: true
+#    properties:
+ #     hibernate:
+ #       format_sql: true
+ #     enable_lazy_load_no_trans: true
