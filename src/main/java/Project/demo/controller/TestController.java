@@ -4,6 +4,7 @@ package Project.demo.controller;
 import Project.demo.DTO.TestDTO;
 import Project.demo.service.TestService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,5 +26,14 @@ public class TestController {
     {
         return testService.getUserList();
     }
+
+
+    @RequestMapping(value = "/user/{phone}", method = RequestMethod.GET)
+    public List<TestDTO> getNumber(@PathVariable String phone)
+    {
+        return testService.SearchNumber(phone);
+    }
+
+
 
 }

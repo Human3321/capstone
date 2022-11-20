@@ -9,4 +9,7 @@ import java.util.List;
 
 public interface TestMapper {
     List<TestDTO> getUserList();
+    List<TestDTO> SearchNumber(String phone);
 }
+
+

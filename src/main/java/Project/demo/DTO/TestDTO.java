@@ -10,6 +10,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TestDTO {
-    private String phone;
+   // private String phone;
     private int report_count;
 }
+/*
+@Getter
+@Setter
+public class Count{
+    private int count;
+}
+*/

@@ -17,4 +17,11 @@ public class TestServiceImpl implements TestService {
     public List<TestDTO> getUserList() {
         return testMapper.getUserList();
     }
+
+    @Override
+    public List<TestDTO> SearchNumber(String phone){
+        return testMapper.SearchNumber(phone);
+    }
+
+
 }

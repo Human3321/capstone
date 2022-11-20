@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface TestService {
     public List<TestDTO> getUserList();
+    public List<TestDTO> SearchNumber(String phone);
 
 }
