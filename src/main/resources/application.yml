@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://15.164.192.100:51337/sys?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false
-    username: '0000'
-    password: '0000'
+    url: 
+    username: 
+    password: 
 
 
 
