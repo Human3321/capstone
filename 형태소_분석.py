@@ -1,3 +1,0 @@
-# Mecab 설치 필요...
-from konlpy.tag import Mecab
-Mecab().nouns("기하의 계좌의 계좌번호를 불러주세요")
