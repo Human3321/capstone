@@ -80,9 +80,12 @@ PORT = 9996
 
 # 서버 소켓 생성
 print('>> Server Start')
+# 소켓 설정(TCP)
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+# 서버 연결 + 생성
 server_socket.bind((HOST, PORT))
+# 대기 clinet 설정 => 기본값
 server_socket.listen()
 
 try:
