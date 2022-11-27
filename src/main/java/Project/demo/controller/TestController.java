@@ -34,6 +34,9 @@ public class TestController {
         return testService.SearchNumber(phone);
     }
 
-
-
+    @RequestMapping(value = "/report/{phone}", method = RequestMethod.GET)
+    public List<TestDTO> InsertReport(@PathVariable String phone)
+    {
+        return testService.InsertReport(phone);
+    }
 }
