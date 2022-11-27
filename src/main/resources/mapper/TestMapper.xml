@@ -13,7 +13,7 @@
     </select>
 
     <select id="InsertReport" parameterType="String" resultType="Project.demo.DTO.TestDTO">
-        INSERT INTO spam_number(phone, report_count) VALUES(#{phone}, 1) ON DUPLICATE KEY UPDATE(phone = #{phone}, report_count = report_count + 1)
+        INSERT INTO spam_number(phone, report_count) VALUES(#{phone}, 1) ON DUPLICATE KEY UPDATE phone = #{phone}, report_count = report_count + 1
     </select>
 
 </mapper>
