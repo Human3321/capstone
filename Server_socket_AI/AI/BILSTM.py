@@ -6,6 +6,7 @@ import pickle
 import re
 from tensorflow.keras.models import load_model
 
+
 save_model = '/workspace/Server_socket_AI/AI/best_model_2.h5'
 save_tokenizer = '/workspace/Server_socket_AI/AI/tokenizer_2.pickle'
 loaded_model = load_model(save_model)
