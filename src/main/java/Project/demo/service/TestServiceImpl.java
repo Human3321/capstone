@@ -23,5 +23,8 @@ public class TestServiceImpl implements TestService {
         return testMapper.SearchNumber(phone);
     }
 
-
+    @Override
+    public List<TestDTO> InsertReport(String phone) {
+        return testMapper.InsertReport(phone);
+    }
 }
