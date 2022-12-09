@@ -1,4 +1,0 @@
-설치 목록
-tensorflow
-keras
-mecab
