@@ -40,6 +40,6 @@ jobs:
         # fields: workflow,job,commit,repo,author,took,ref
         author_name: Heeg
       env:
-        SLACK_URL: ${{ secrets.SLACK_URL }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       if: always()
       
