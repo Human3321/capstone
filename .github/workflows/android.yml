@@ -31,4 +31,15 @@ jobs:
       with:
         name: apk-artifact
         path: ./app/build/outputs/apk/debug/app-debug.apk
+        
+    - name: Slack - Send Msg
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took,pullRequest
+        # fields: workflow,job,commit,repo,author,took,ref
+        author_name: Heeg
+      env:
+        SLACK_URL: ${{ secrets.SLACK_URL }}
+      if: always()
       
