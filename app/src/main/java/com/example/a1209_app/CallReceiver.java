@@ -84,6 +84,15 @@ public class CallReceiver extends BroadcastReceiver {
 
                     try {
                         r = gPHP.execute(url+phoneNum).get();
+
+                        String full = r;
+                        String split[] = full.split(":");
+                        String s = split[1];
+                        String s1[] = s.split("]");
+
+                        Log.d("value_of_str", s1[0]);
+                        result = s1[0];
+
                     } catch (ExecutionException e) {
                         e.printStackTrace();
                     } catch (InterruptedException e) {
@@ -91,11 +100,11 @@ public class CallReceiver extends BroadcastReceiver {
                     }
 
 
-                    Log.d("result 2", "결과 : "+r);
+                    Log.d("result 2", "결과 : "+result);
 
                     if(Result.Getinstance().getResult() != null ){
 
-                            Toast.makeText(context, "신고 누적 :{"+r, Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "신고 누적 :{"+result, Toast.LENGTH_LONG).show();
                         } else{
                             Toast.makeText(context, "깨끗", Toast.LENGTH_LONG).show();
                         }
