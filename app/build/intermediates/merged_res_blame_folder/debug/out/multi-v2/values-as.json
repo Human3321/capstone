@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\chdo5\\AndroidStudioProjects\\1209_app\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-as\\values-as.xml",
+            "outputFile": "C:\\Git\\capstone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-as\\values-as.xml",
             "map": [
                 {
                     "source": "C:\\Users\\chdo5\\.gradle\\caches\\transforms-3\\ec36073ee711044c923a492788972c74\\transformed\\appcompat-v7-28.0.0\\res\\values-as\\values-as.xml",
