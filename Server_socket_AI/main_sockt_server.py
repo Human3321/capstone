@@ -1,4 +1,4 @@
-import socket,os
+import socket, os
 import threading, wave, pyaudio, pickle,struct
 import time, os
 import speech_recognition as sr
