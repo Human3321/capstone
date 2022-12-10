@@ -6,11 +6,13 @@ import static android.Manifest.permission.SYSTEM_ALERT_WINDOW;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -102,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
                     // 어플 사용 설정 OFF
                     use_set = false;
 
+                    Toast.makeText(MainActivity.this, "실시간 탐지가 꺼졌습니다.", Toast.LENGTH_SHORT).show();
+
                 }
                 else if(str_btn.equals("OFF")){ // 클릭 -> 실시간 탐지 ON
 
@@ -120,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
 
                     // 어플 사용 설정 ON
                     use_set = true;
+
+                    Toast.makeText(MainActivity.this, "실시간 탐지가 켜졌습니다.", Toast.LENGTH_SHORT).show();
 
                 }
             }
