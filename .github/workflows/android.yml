@@ -25,4 +25,4 @@ jobs:
     - name: Build with Gradle
       run: ./1209_app/gradlew build
     - name: Build with Gradle Init
-      run: ./gradlew init
+      run: ./1209_app/gradlew init
