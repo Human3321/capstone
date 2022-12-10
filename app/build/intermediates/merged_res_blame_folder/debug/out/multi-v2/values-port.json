@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Git\\capstone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
+            "outputFile": "C:\\Users\\PC\\Desktop\\capstone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\chdo5\\.gradle\\caches\\transforms-3\\ec36073ee711044c923a492788972c74\\transformed\\appcompat-v7-28.0.0\\res\\values-port\\values-port.xml",
+                    "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-3\\ec36073ee711044c923a492788972c74\\transformed\\appcompat-v7-28.0.0\\res\\values-port\\values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

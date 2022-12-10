@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Git\\capstone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\PC\\Desktop\\capstone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\chdo5\\.gradle\\caches\\transforms-3\\ec36073ee711044c923a492788972c74\\transformed\\appcompat-v7-28.0.0\\res\\values-night-v8\\values-night-v8.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,125,209,293,389,491,593",
-                        "endColumns": "69,83,83,95,101,101,93",
-                        "endOffsets": "120,204,288,384,486,588,682"
-                    },
-                    "to": {
-                        "startLines": "9,10,11,12,13,14,15",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "407,477,561,645,741,843,945",
-                        "endColumns": "69,83,83,95,101,101,93",
-                        "endOffsets": "472,556,640,736,838,940,1034"
-                    }
-                },
-                {
-                    "source": "C:\\Git\\capstone\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "source": "C:\\Users\\PC\\Desktop\\capstone\\app\\src\\main\\res\\values-night\\themes.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -37,6 +20,23 @@
                         "endLines": "8",
                         "endColumns": "12",
                         "endOffsets": "402"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-3\\ec36073ee711044c923a492788972c74\\transformed\\appcompat-v7-28.0.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593",
+                        "endColumns": "69,83,83,95,101,101,93",
+                        "endOffsets": "120,204,288,384,486,588,682"
+                    },
+                    "to": {
+                        "startLines": "9,10,11,12,13,14,15",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "407,477,561,645,741,843,945",
+                        "endColumns": "69,83,83,95,101,101,93",
+                        "endOffsets": "472,556,640,736,838,940,1034"
                     }
                 }
             ]

@@ -5,6 +5,8 @@ plugins {
 android {
     compileSdk 30
 
+    tasks.register("prepareKotlinBuildScriptModel"){}
+
     defaultConfig {
         applicationId "com.example.a1209_app"
         minSdk 26
