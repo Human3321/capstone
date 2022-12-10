@@ -21,10 +21,8 @@ jobs:
         cache: gradle
 
     - name: Grant execute permission for gradlew
-      run: chmod +x ./1209_app/gradlew
-    - name: Build with Gadle check
-      run: echo "ls ./1209_app"
+      run: chmod +x .gradlew
     - name: Build with Gradle init
-      run: ./1209_app/gradlew init
+      run: ./gradlew init
     - name: Build with Gradle build
-      run: ./1209_app/gradlew build
+      run: ./gradlew build
