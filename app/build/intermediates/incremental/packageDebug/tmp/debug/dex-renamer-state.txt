@@ -1,4 +1,4 @@
-#Sat Dec 10 18:54:21 KST 2022
+#Sat Dec 10 19:46:45 KST 2022
 base.2=C\:\\Git\\capstone\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
 path.2=2/classes.dex
 base.1=C\:\\Git\\capstone\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex

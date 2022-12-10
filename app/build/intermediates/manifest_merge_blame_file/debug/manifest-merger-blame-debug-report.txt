@@ -7,7 +7,7 @@
 7    <uses-sdk
 8        android:minSdkVersion="26"
 8-->C:\Git\capstone\app\src\main\AndroidManifest.xml
-9        android:targetSdkVersion="32" />
+9        android:targetSdkVersion="30" />
 9-->C:\Git\capstone\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
