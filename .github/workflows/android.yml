@@ -36,8 +36,7 @@ jobs:
       uses: 8398a7/action-slack@v3
       with:
         status: ${{ job.status }}
-        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took,pullRequest
-        # fields: workflow,job,commit,repo,author,took,ref
+        fields: repo,workflow,message,commit,author,eventName,took
         author_name: Heeg
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
