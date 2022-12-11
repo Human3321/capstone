@@ -68,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 String str_btn_vib = btn_set_vib.getText().toString(); // 진동 알림 설정 버튼의 텍스트 변경
 
                 // 진동알림 ON -> OFF
-                if(str_btn_vib.equals("켜짐")){
-                    btn_set_vib.setText("꺼짐");
+                if(str_btn_vib.equals("ON")){
+                    btn_set_vib.setText("OFF");
 
                     // 버튼 클릭시 애니메이션
                     ValueAnimator animator1 = ObjectAnimator.ofFloat(btn_set_vib, "translationX", 100f,150f,0f); // values 수정 필요
@@ -84,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 // 진동알림 OFF -> ON
-                else if(str_btn_vib.equals("꺼짐")){
-                    btn_set_vib.setText("켜짐");
+                else if(str_btn_vib.equals("OFF")){
+                    btn_set_vib.setText("ON");
 
                     // 버튼 클릭시 애니메이션
                     ValueAnimator animator2 = ObjectAnimator.ofFloat(btn_set_vib, "translationX", 100f,150f,0f);
