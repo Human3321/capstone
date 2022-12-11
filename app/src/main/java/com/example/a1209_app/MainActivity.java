@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static boolean vib_mode; // 알림 진동 설정 (true - o , false - x)
     public static boolean use_set; // 사용 설정 (true - ON , false - OFF)
+    public static TextView txt_cicd; // cicd 용 텍스트뷰
     /*GradientDrawable btn_front = (GradientDrawable) ContextCompat.getDrawable(this, R.drawable.roundbtn_stroke);
     GradientDrawable btn_back = (GradientDrawable) ContextCompat.getDrawable(this, R.drawable.roundbtn);
     GradientDrawable btn_little = (GradientDrawable) ContextCompat.getDrawable(this,R.drawable.little_round_btn);*/
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         //Button btn_set_use_back = (Button) findViewById(R.id.btn);
         Button btn_set_vib = (Button) findViewById(R.id.btn_set_vibration); // 진동 알림 설정 버튼
         Button btn_set_vib_txt = (Button) findViewById(R.id.btn_set_vibration_txt); // 진동 알림 설정 버튼 껍데기
+        txt_cicd = (TextView) findViewById(R.id.txtView_json); // cicd 용 텍스트뷰
+
 
         // 진동 알림 설정 버튼 리스너
         btn_set_vib.setOnClickListener(new View.OnClickListener(){

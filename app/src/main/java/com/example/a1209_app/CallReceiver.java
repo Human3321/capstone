@@ -59,6 +59,7 @@ public class CallReceiver extends BroadcastReceiver {
 
                 // 현재 폰 상태 가져옴
                 String state = extras.getString(TelephonyManager.EXTRA_STATE);
+                Log.d("phone_state", state);
 
                 // 중복 호출 방지
                 if (state.equals(phonestate)) {
@@ -70,50 +71,44 @@ public class CallReceiver extends BroadcastReceiver {
                 // [벨 울리는 중]
                 if (state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
 
-                    // 어플 사용 설정 ON 일 때 - 1차 판별
-                    //if(MainActivity.use_set==true){
-
-                    String r = "";
-
-                        String phone = extras.getString(TelephonyManager.EXTRA_INCOMING_NUMBER);
-                        // 수신 번호 가져옴
-                        //String phone = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
-                        final String phoneNum = PhoneNumberUtils.formatNumber(phone);
-                        phoneNumtoReport = phoneNum;
-                        Log.d("qqq", "통화벨 울리는중");
-                        Log.d("phone_number", "수신 전화번호: "+phoneNum);
-
-                        // 서버에 수신 전화번호 보내서 결과 받아옴
-                        gPHP = new GettingPHP();
-                        gPHP.execute(url+phoneNum);
-
-                    try {
-                        r = gPHP.execute(url+phoneNum).get();
-
-                        String full = r;
-                        String split[] = full.split(":");
-                        String s = split[1];
-                        String s1[] = s.split("]");
-
-                        Log.d("value_of_str", s1[0]);
-                        result = s1[0];
-
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
 
 
-                    Log.d("result 2", "결과 : "+result);
+                    if(MainActivity.use_set == true) {
+                        String phone;
 
-                    if(Result.Getinstance().getResult() != null ){
+                        if (intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER) != null) {
+                            // 수신 번호 가져옴
+                            phone = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
 
-                            Toast.makeText(context, "신고 누적 :{"+result, Toast.LENGTH_LONG).show();
-                        } else{
-                            Toast.makeText(context, "깨끗", Toast.LENGTH_LONG).show();
+                            Log.d("qqq", "통화벨 울리는중");
+                            Log.d("phone_number", "수신 전화번호: " + phone);
+
+
+                            try {
+                                // 서버에 수신 전화번호 보내서 결과 받아옴
+                                gPHP = new GettingPHP();
+                                result = gPHP.execute(url + phone).get();
+                                Log.d("res_11", result);
+
+                                if (result.length() >= 7) {
+                                    String full = result;
+                                    String split[] = full.split(":");
+                                    String s = split[1];
+                                    String s1[] = s.split("]");
+                                    MainActivity.txt_cicd.setText("누적 신고 횟수 : {" + s1[0]);
+                                    Toast.makeText(context, "주의! 신고 {" + s1[0] + "회 누적된 번호입니다.", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(context, "깨끗", Toast.LENGTH_LONG).show();
+                                }
+
+                            } catch (Exception e) {
+                                Log.d("error_e", String.valueOf(e));
+                                e.printStackTrace();
+                            }
+                            Log.d("res_22", result);
+
                         }
-                    //}
+                    }
 
                 }
                 // [통화 중]
@@ -205,17 +200,17 @@ public class CallReceiver extends BroadcastReceiver {
 
 
         // 가져온 데이터 활용
-        @Override
+        /*@Override
         protected void onPostExecute(String str) {
-            /*String full = str;
+            String full = str;
             String split[] = full.split(":");
             String s = split[1];
             String s1[] = s.split("]");
 
             Log.d("value_of_str", s1[0]);
             result = s1[0];
-            Log.d("result 1", "1: "+result);*/
-        }
+            Log.d("result 1", "1: "+result);
+        }*/
 
     }
 
