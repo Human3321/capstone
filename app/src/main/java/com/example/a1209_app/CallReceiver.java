@@ -17,6 +17,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.ExecutionException;
 
 public class CallReceiver extends BroadcastReceiver {
 
@@ -63,30 +64,42 @@ public class CallReceiver extends BroadcastReceiver {
                     // 어플 사용 설정 ON 일 때 - 1차 판별
                     //if(MainActivity.use_set==true){
                     //if(MainActivity.use_set = false){
-                    String phone;
 
-                    if(intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER)!=null){
-                        // 수신 번호 가져옴
-                        phone = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
+                    if(MainActivity.use_set == true){
+                        String phone;
 
-                        Log.d("qqq", "통화벨 울리는중");
-                        Log.d("phone_number", "수신 전화번호: "+phone);
+                        if(intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER)!=null){
+                            // 수신 번호 가져옴
+                            phone = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
 
-                        // 서버에 수신 전화번호 보내서 결과 받아옴
-                        gPHP = new GettingPHP();
-                        gPHP.execute(url+phone);
+                            Log.d("qqq", "통화벨 울리는중");
+                            Log.d("phone_number", "수신 전화번호: "+phone);
 
-                        if(result != null ){
-                            String full = result;
-                            String split[] = full.split(":");
-                            String s = split[1];
-                            String s1[] = s.split("]");
-                            Toast.makeText(context, "주의! 신고 {"+s1[0]+"회 누적된 번호입니다.", Toast.LENGTH_LONG).show();
-                        } else{
-                            Toast.makeText(context, "깨끗", Toast.LENGTH_SHORT).show();
+
+                            try {
+                                // 서버에 수신 전화번호 보내서 결과 받아옴
+                                gPHP = new GettingPHP();
+                                result = gPHP.execute(url+phone).get();
+                                Log.d("res_11", result);
+
+                                if(result.length() >= 7 ){
+                                    String full = result;
+                                    String split[] = full.split(":");
+                                    String s = split[1];
+                                    String s1[] = s.split("]");
+                                    Toast.makeText(context, "주의! 신고 {"+s1[0]+"회 누적된 번호입니다.", Toast.LENGTH_LONG).show();
+                                } else{
+                                    Toast.makeText(context, "깨끗", Toast.LENGTH_LONG).show();
+                                }
+
+                            } catch (Exception e) {
+                                Log.d("error_e", String.valueOf(e));
+                                e.printStackTrace();
+                            }
+                            Log.d("res_22", result);
+
                         }
                     }
-                    //}
 
                 }
                 // [통화 중]
@@ -167,11 +180,11 @@ public class CallReceiver extends BroadcastReceiver {
         }
 
         // doInBackground 에서의 return 값 활용
-        @Override
+        /*@Override
         protected void onPostExecute(String str) { // str == doInBackground의 return 값
             Log.d("value_of_str", str);
             result = str;
-        }
+        }*/
     }
 
 
