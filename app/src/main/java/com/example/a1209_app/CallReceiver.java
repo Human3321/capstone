@@ -27,6 +27,12 @@ public class CallReceiver extends BroadcastReceiver {
     String phonestate;
     public static final String TAG_phoneState = "PHONE STATE";
     String url = "http://13.124.192.194:54103/user/"; // 서버 IP 주소
+
+    // 신고용 url
+    String reportUrl = "http://13.124.192.194:54103/report/";
+    // 신고용 전역 휴대폰번호
+    String phoneNumtoReport;
+
     public GettingPHP gPHP;
     String result = "";
 
@@ -73,14 +79,13 @@ public class CallReceiver extends BroadcastReceiver {
                         // 수신 번호 가져옴
                         //String phone = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
                         final String phoneNum = PhoneNumberUtils.formatNumber(phone);
+                        phoneNumtoReport = phoneNum;
                         Log.d("qqq", "통화벨 울리는중");
                         Log.d("phone_number", "수신 전화번호: "+phoneNum);
 
                         // 서버에 수신 전화번호 보내서 결과 받아옴
                         gPHP = new GettingPHP();
-
                         gPHP.execute(url+phoneNum);
-
 
                     try {
                         r = gPHP.execute(url+phoneNum).get();
@@ -114,16 +119,38 @@ public class CallReceiver extends BroadcastReceiver {
                 // [통화 중]
                 else if (state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
                     Log.d("qqq", "통화중");
-
+                    // Todo: 소켓 통신 받아오기
+                    // -> 앱 실행시 스레드로 해결
                 }
                 // [통화종료]
                 else if (state.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
                     Log.d("qqq", "통화종료 혹은 통화벨 종료");
-                }
+                    // Todo: 팝업창 띄워서 신고 기능 구현하기
+//                    // 일단 팝업창 띄워보려고 함
+//                    MainActivity ma = new MainActivity();
+//                    ma.showDialog();
 
+                    // Todo: 자동 신고
+                    // 받아온 판별 결과가 1이라면
+                    if(MainActivity.isVP == 1){
+                        // 서버에 수신 전화번호 신고
+                        gPHP = new GettingPHP();
+                        gPHP.execute(reportUrl+phoneNumtoReport);
+                    }
+
+                    // 자동 신고 url 확인용(전화번호 잘 넘겨받았는지, ,,,report로 잘 뜨는지)
+                    /*try {
+                        String ru = gPHP.execute(reportUrl+phoneNumtoReport).get();
+                        System.out.println(ru);
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }*/
+
+                }
             }
         }
-
     }
 
     class GettingPHP extends AsyncTask<String, String, String> {

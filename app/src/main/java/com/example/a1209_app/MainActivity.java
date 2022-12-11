@@ -4,8 +4,12 @@ import static android.Manifest.permission.READ_CALL_LOG;
 import static android.Manifest.permission.READ_PHONE_STATE;
 import static android.Manifest.permission.SYSTEM_ALERT_WINDOW;
 
+import static java.lang.Integer.parseInt;
+
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -15,6 +19,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
     GradientDrawable btn_back = (GradientDrawable) ContextCompat.getDrawable(this, R.drawable.roundbtn);
     GradientDrawable btn_little = (GradientDrawable) ContextCompat.getDrawable(this,R.drawable.little_round_btn);*/
 
+    // 수신에 사용할 IP 주소
+    String IP = "54.180.140.78";
+    // 포트 번호
+    int Port = 59082;
+
+    // 판별 결과
+    static int isVP;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Button btn_set_vib = (Button) findViewById(R.id.btn_set_vibration); // 진동 알림 설정 버튼
         Button btn_set_vib_txt = (Button) findViewById(R.id.btn_set_vibration_txt); // 진동 알림 설정 버튼 껍데기
 
-        // 진동 알림 설정 버튼
+        // 진동 알림 설정 버튼 리스너
         btn_set_vib.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -78,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // 어플 설정 버튼
+        // 어플 설정 버튼 리스너
         btn_set_use.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -124,8 +144,80 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        new Thread(() -> {
+            int msg1 = 0;
+            Socket client = new Socket();
+            InetSocketAddress ipep = new InetSocketAddress(IP, Port);
+            try {
+                client.connect(ipep);
+//                printClientLog("소켓 연결됨");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            boolean isconn = client.isConnected();
+
+            while (isconn) {
+                // 소켓이 접속이 완료되면 inputstream과 outputstream을 받는다.
+                try (OutputStream sender = client.getOutputStream();
+                     InputStream receiver = client.getInputStream();) {
+                    byte[] data = new byte[4];
+                    // 데이터 길이를 받는다.
+                    receiver.read(data, 0, 4);
+
+                    // ByteBuffer를 통해 little 엔디언 형식으로 데이터 길이를 구한다.
+                    ByteBuffer b = ByteBuffer.wrap(data);
+                    b.order(ByteOrder.LITTLE_ENDIAN);
+                    int length = b.getInt();
+
+                    // 데이터를 받을 버퍼를 선언한다.
+                    data = new byte[length];
+                    // 데이터를 받는다.
+                    receiver.read(data, 0, length);
+
+                    // byte형식의 데이터를 string형식으로 변환한다.
+                    String msg = new String(data, "UTF-8");
+                    // 스트링 변환 이후 int로 변환(= 최종 값)
+                    msg1 = parseInt(msg);
+
+                    // Todo: 받아온 값 이용할 수 있도록 가공
+                    // 판별시 자동 신고 쪽으로 가려고 함,, 전역으로 하나 선언해서 할당해주기?
+                    // 텍스트뷰에 출력한다.
+//                    printClientLog("서버로부터 받음(int) : " + msg1);
+
+                    // 전역변수에 받아온 값 할당
+                    isVP = msg1;
+                    // 콘솔에 출력한다.(확인용!!!!)
+                    System.out.println(msg1);
+
+                } catch (Throwable e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
     }
 
+    // 팝업창(동작안됨)
+    public void showDialog() {
+        AlertDialog.Builder msgBuilder = new AlertDialog.Builder(MainActivity.this)
+                .setTitle("앱 끈다?")
+                .setMessage("진짜 끈다?")
+                .setPositiveButton("꺼라", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(MainActivity.this, "안 끔", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        AlertDialog msgDlg = msgBuilder.create();
+        msgDlg.show();
+    }
 
     // 어플 사용설정 최초 ON 에 한해서 권한을 받아옴
     public void onCheckPermission(){
