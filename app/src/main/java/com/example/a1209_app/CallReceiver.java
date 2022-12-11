@@ -58,12 +58,10 @@ public class CallReceiver extends BroadcastReceiver {
                     phonestate = state;
                 }
 
+
                 // [벨 울리는 중]
                 if (state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
 
-                    // 어플 사용 설정 ON 일 때 - 1차 판별
-                    //if(MainActivity.use_set==true){
-                    //if(MainActivity.use_set = false){
 
                     if(MainActivity.use_set == true){
                         String phone;
@@ -87,6 +85,7 @@ public class CallReceiver extends BroadcastReceiver {
                                     String split[] = full.split(":");
                                     String s = split[1];
                                     String s1[] = s.split("]");
+                                    MainActivity.txt_cicd.setText("누적 신고 횟수 : {"+ s1[0]);
                                     Toast.makeText(context, "주의! 신고 {"+s1[0]+"회 누적된 번호입니다.", Toast.LENGTH_LONG).show();
                                 } else{
                                     Toast.makeText(context, "깨끗", Toast.LENGTH_LONG).show();
@@ -104,12 +103,17 @@ public class CallReceiver extends BroadcastReceiver {
                 }
                 // [통화 중]
                 else if (state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
-                    Log.d("qqq", "통화중");
 
+                    if(intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER)!=null) {
+                        Log.d("qqq", "통화중");
+                    }
                 }
                 // [통화종료]
                 else if (state.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
-                    Log.d("qqq", "통화종료 혹은 통화벨 종료");
+                    if(intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER)!=null) {
+                        Log.d("qqq", "통화종료 혹은 통화벨 종료");
+                    }
+
                 }
 
             }
@@ -165,7 +169,7 @@ public class CallReceiver extends BroadcastReceiver {
                             if ( line == null )
                                 break;
 
-                            //result = line;
+
                         }
                         br.close();
                     }

@@ -1,6 +1,7 @@
 R_DEF: Internal format may change without notice
 local
 color black
+color ic_launcher_icon1_background
 color purple_200
 color purple_500
 color purple_700
@@ -23,10 +24,14 @@ id contents_report_popup
 id textView
 id textView2
 id title_popup
+id txtView_json
 layout activity_main
 layout activity_popup_report
 layout activity_popup_warning
 mipmap ic_launcher
+mipmap ic_launcher_icon1
+mipmap ic_launcher_icon1_foreground
+mipmap ic_launcher_icon1_round
 mipmap ic_launcher_round
 string app_name
 style Theme.1209_app

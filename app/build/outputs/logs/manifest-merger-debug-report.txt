@@ -85,7 +85,7 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\chdo5\.gra
 	android:roundIcon
 		ADDED from C:\Git\capstone\app\src\main\AndroidManifest.xml:15:9-54
 	android:icon
-		ADDED from C:\Git\capstone\app\src\main\AndroidManifest.xml:13:9-43
+		ADDED from C:\Git\capstone\app\src\main\AndroidManifest.xml:13:9-49
 	android:allowBackup
 		ADDED from C:\Git\capstone\app\src\main\AndroidManifest.xml:12:9-35
 	android:theme
