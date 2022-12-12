@@ -6,83 +6,86 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="26"
-8-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml
+8-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml
+9-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml
 10
-11    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-11-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:5:5-75
-11-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:5:22-72
-12    <uses-permission android:name="android.permission.READ_CALL_LOG" />
-12-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:6:5-71
-12-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:6:22-69
-13    <uses-permission android:name="android.permission.INTERNET" />
-13-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:7:5-67
-13-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:7:22-64
-14    <uses-permission android:name="android.permission.VIBRATE" />
-14-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:8:5-66
-14-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:8:22-63
-15
-16    <application
-16-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:10:5-40:19
-17        android:allowBackup="true"
-17-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:11:9-35
-18        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
-18-->[com.android.support:support-compat:28.0.0] C:\Users\PC\.gradle\caches\transforms-3\d538d5a1968642e8fbde64390b8e4a29\transformed\support-compat-28.0.0\AndroidManifest.xml:22:18-91
-19        android:debuggable="true"
-20        android:extractNativeLibs="false"
-21        android:icon="@mipmap/ic_launcher"
-21-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:12:9-43
-22        android:label="@string/app_name"
-22-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:13:9-41
-23        android:roundIcon="@mipmap/ic_launcher_round"
-23-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:14:9-54
-24        android:supportsRtl="true"
-24-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:15:9-35
-25        android:theme="@style/Theme.1209_app"
-25-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:16:9-46
-26        android:usesCleartextTraffic="true" >
-26-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:17:9-44
-27        <uses-library
-27-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:19:9-20:39
-28            android:name="org.apache.http.legacy"
-28-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:19:23-60
-29            android:required="false" />
-29-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:20:13-37
-30
-31        <receiver
-31-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:22:9-29:20
-32            android:name="com.example.a1209_app.CallReceiver"
-32-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:23:13-41
-33            android:enabled="true"
-33-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:24:13-35
-34            android:exported="true" >
-34-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:25:13-36
-35            <intent-filter>
-35-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:26:13-28:29
-36                <action android:name="android.intent.action.PHONE_STATE" />
-36-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:27:17-76
-36-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:27:25-73
-37            </intent-filter>
-38        </receiver>
-39
-40        <activity
-40-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:31:9-39:20
-41            android:name="com.example.a1209_app.MainActivity"
-41-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:32:13-41
-42            android:exported="true" >
-42-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:33:13-36
-43            <intent-filter>
-43-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:34:13-38:29
-44                <action android:name="android.intent.action.MAIN" />
-44-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:35:17-69
-44-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:35:25-66
-45
-46                <category android:name="android.intent.category.LAUNCHER" />
-46-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:37:17-77
-46-->C:\Users\PC\Desktop\capstone\app\src\main\AndroidManifest.xml:37:27-74
-47            </intent-filter>
-48        </activity>
-49    </application>
-50
-51</manifest>
+11    <!-- 1차 판별 -->
+12    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+12-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:6:5-75
+12-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:6:22-72
+13    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+13-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:7:5-71
+13-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:7:22-69
+14    <!-- 2차 판별 -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:9:5-67
+15-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:9:22-64
+16    <uses-permission android:name="android.permission.VIBRATE" />
+16-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:10:5-82
+16-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:10:22-63
+17
+18    <application
+18-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:12:5-42:19
+19        android:allowBackup="true"
+19-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:13:9-35
+20        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+20-->[com.android.support:support-compat:28.0.0] C:\Users\jinhe\.gradle\caches\transforms-3\d538d5a1968642e8fbde64390b8e4a29\transformed\support-compat-28.0.0\AndroidManifest.xml:22:18-91
+21        android:debuggable="true"
+22        android:extractNativeLibs="false"
+23        android:icon="@mipmap/ic_launcher"
+23-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:14:9-43
+24        android:label="@string/app_name"
+24-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:15:9-41
+25        android:roundIcon="@mipmap/ic_launcher_round"
+25-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:16:9-54
+26        android:supportsRtl="true"
+26-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:17:9-35
+27        android:testOnly="true"
+28        android:theme="@style/Theme.1209_app"
+28-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:18:9-46
+29        android:usesCleartextTraffic="true" >
+29-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:19:9-44
+30        <uses-library
+30-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:21:9-22:39
+31            android:name="org.apache.http.legacy"
+31-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:21:23-60
+32            android:required="false" />
+32-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:22:13-37
+33
+34        <receiver
+34-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:24:9-31:20
+35            android:name="com.example.a1209_app.CallReceiver"
+35-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:25:13-41
+36            android:enabled="true"
+36-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:26:13-35
+37            android:exported="true" >
+37-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:27:13-36
+38            <intent-filter>
+38-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:28:13-30:29
+39                <action android:name="android.intent.action.PHONE_STATE" />
+39-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:29:17-76
+39-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:29:25-73
+40            </intent-filter>
+41        </receiver>
+42
+43        <activity
+43-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:33:9-41:20
+44            android:name="com.example.a1209_app.MainActivity"
+44-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:34:13-41
+45            android:exported="true" >
+45-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:35:13-36
+46            <intent-filter>
+46-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:36:13-40:29
+47                <action android:name="android.intent.action.MAIN" />
+47-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:37:17-69
+47-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:37:25-66
+48
+49                <category android:name="android.intent.category.LAUNCHER" />
+49-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:39:17-77
+49-->C:\Users\jinhe\Desktop\1211_git\app\src\main\AndroidManifest.xml:39:27-74
+50            </intent-filter>
+51        </activity>
+52    </application>
+53
+54</manifest>

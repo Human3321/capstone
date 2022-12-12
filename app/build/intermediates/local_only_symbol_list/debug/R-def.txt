@@ -23,6 +23,7 @@ id contents_report_popup
 id textView
 id textView2
 id title_popup
+id txtView_json
 layout activity_main
 layout activity_popup_report
 layout activity_popup_warning

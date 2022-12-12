@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\PC\\Desktop\\capstone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
+            "outputFile": "C:\\Users\\jinhe\\Desktop\\1211_git\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-3\\ec36073ee711044c923a492788972c74\\transformed\\appcompat-v7-28.0.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\jinhe\\.gradle\\caches\\transforms-3\\ec36073ee711044c923a492788972c74\\transformed\\appcompat-v7-28.0.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",

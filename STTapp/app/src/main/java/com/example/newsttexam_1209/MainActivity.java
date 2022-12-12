@@ -41,25 +41,24 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     /**
-     *
      * 인텐트란
      * -> 메시징 객체.
      * 다른 앱 구성 요소로부터 작업을 요청하는 데 사용된다.
      * 컴포넌트를 실행하기 위해 시스템에 넘기는 정보라고 볼 수 있음.
-     *
-     *  4대 컴포넌트
+     * <p>
+     * 4대 컴포넌트
      * - 1. 액티비티(Activity)
      * - 2. 서비스(Service)
      * - 3. 브로드캐스트 리시버(Broadcast Receiver)
      * - 4. 컨텐트 프로바이더(Content Provider)
      * 각 컴포넌트간의 통신을 맡고 있는 것이 Intent(인텐트)다.
-     *
+     * <p>
      * 유형 1:
      * 명시적 인텐트(화면 전환)
-     *
+     * <p>
      * 유형 2:
      * 암시적 인텐트(Action 에 따른 클래스 호출(여러 개일수도 있음))
-     * */
+     */
 
     // 인텐트 선언
     Intent intent;
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     // IP 주소
     String IP = "54.180.140.78";
-    int Port = 59082;
+    int Port = 58607;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,29 +94,27 @@ public class MainActivity extends AppCompatActivity {
 
         // 인텐트 생성: 음성녹음 - RecognizerIntent 객체 생성
         intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,getPackageName());
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,"ko-KR");
+        intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getPackageName());
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ko-KR");
 
         // 버튼 클릭 동작 리스너
         sttBtn.setOnClickListener(v -> {
             if (!recording) {   //녹음 시작
                 StartRecord();
                 Toast.makeText(getApplicationContext(), "지금부터 음성으로 기록합니다.", Toast.LENGTH_SHORT).show();
-            }
-            else {  //이미 녹음 중이면 녹음 중지
+            } else {  //이미 녹음 중이면 녹음 중지
                 StopRecord();
             }
         });
     }
 
     /**
-     *
      * SpeechRecognizer에 RecognitionListener를 할당
      * -> RecognitionListener가 recognition 관련 이벤트를 수신
      * startListening(), stopListening() 호출 전에 setRecognitionListener()가 선행되어야 함
-     *
+     * <p>
      * SpeechRecognizer와 RecognitionListener의 동작은 메인 스레드에서 이루어져야 함
-     * */
+     */
     // 녹음 시작
     void StartRecord() {
         recording = true;
@@ -147,12 +144,12 @@ public class MainActivity extends AppCompatActivity {
     // 퍼미션 체크
     void CheckPermission() {
         // 안드로이드 버전이 6.0 이상인 경우
-        if ( Build.VERSION.SDK_INT >= 23 ){
+        if (Build.VERSION.SDK_INT >= 23) {
             // 인터넷이나 녹음 권한이 없으면 권한 요청
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) == PackageManager.PERMISSION_DENIED
-             || ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_DENIED ) {
+                    || ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_DENIED) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET,
-                                                               Manifest.permission.RECORD_AUDIO},PERMISSION);
+                        Manifest.permission.RECORD_AUDIO}, PERMISSION);
             }
         }
     }
@@ -215,9 +212,9 @@ public class MainActivity extends AppCompatActivity {
                     message = "다시 시도해 주세요.";
                     break;*/
                 case SpeechRecognizer.ERROR_NO_MATCH:
-                    //message = "찾을 수 없음";
-                    //녹음을 오래하거나 speechRecognizer.stopListening()을 호출하면 발생하는 에러
-                    //speechRecognizer 다시 생성해 녹음 재개
+                    // message = "찾을 수 없음";
+                    // 녹음을 오래하거나 speechRecognizer.stopListening()을 호출하면 발생하는 에러
+                    // speechRecognizer 다시 생성해 녹음 재개
                     if (recording)
                         StartRecord();
                     return; //토스트 메세지 출력 X
@@ -234,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                     message = "알 수 없는 오류 발생";
                     break;
             }
-            Toast.makeText(getApplicationContext(), "에러가 발생하였습니다. : " + message,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "에러가 발생하였습니다. : " + message, Toast.LENGTH_SHORT).show();
         }
 
         // 인식 결과가 준비됐을 때 호출
@@ -246,27 +243,29 @@ public class MainActivity extends AppCompatActivity {
             String originText = textView.getText().toString();  //기존 text
 
             String newText = "";
-            for(int i = 0; i < matches.size() ; i++){
+            for (int i = 0; i < matches.size(); i++) {
                 // 여기서 텍스트뷰에 표시랑 동시에 보내주면?
                 newText += matches.get(i);
 //                textView.setText(matches.get(i));
             }
 
-            textView.setText(originText + newText + " ");	//기존의 text에 인식 결과를 이어붙임
+            textView.setText(originText + newText + " ");    //기존의 text에 인식 결과를 이어붙임
             String finalNewText = textView.getText().toString();
 
             // Todo: 적절한 길이 찾기. 250은 너무 긴 것 같아서 일단 줄여둠
             // 텍스트 길이가 200 이상이 되면
             if (textView.length() > 200) {
                 // 소켓으로 전송
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        send(finalNewText);
-                    }
-                }).start();
+                Thread tr = new Thread(() -> send(finalNewText));
+                tr.start();
                 // 텍스트 초기화(이미 보냈으니)
                 textView.setText("");
+                try {
+                    Thread.sleep(1000);
+                } catch(InterruptedException e) {
+                    e.printStackTrace();
+                }
+                tr.interrupt();
             }
             // 녹음버튼을 누를 때까지 계속 녹음해야 하므로 녹음 재개
             speechRecognizer.startListening(intent);
@@ -293,12 +292,6 @@ public class MainActivity extends AppCompatActivity {
             client.connect(ipep);
             // 소켓이 접속이 완료되면 inputstream과 outputstream을 받는다.
             try (OutputStream sender = client.getOutputStream(); InputStream receiver = client.getInputStream();) {
-                // 메시지는 for 문을 통해 10번 메시지를 전송한다.
-                // for (int i = 0; i < 10; i++) {
-
-                // 전송할 메시지를 작성한다.
-//                String msg = "java test message - Hello";
-
                 // string을 byte배열 형식으로 변환한다.
                 byte[] data = msg.getBytes();
                 // ByteBuffer를 통해 데이터 길이를 byte형식으로 변환한다.
@@ -333,16 +326,44 @@ public class MainActivity extends AppCompatActivity {
                 // 스트링 변환 이후 int로 변환
                 int msg1 = parseInt(msg);
 
-                // 텍스트뷰에 출력한다.
-//                printClientLog("서버로부터 받음(int) : " + msg1);
-
                 // 콘솔에 출력한다.
                 System.out.println(msg);
-                // }
             }
         } catch (Throwable e) {
             e.printStackTrace();
         }
     }
+}
 
+class ExampleThread implements Runnable {
+    private String name;
+    private boolean exitThread;
+    Thread thread;
+
+    ExampleThread(String name) {
+        this.name = name;
+        thread = new Thread(this, name);
+        System.out.println("Created Thread: " + thread);
+        exitThread = false;
+        thread.start();
+    }
+
+    @Override
+    public void run() {
+
+        while (!exitThread) {
+            System.out.println(name + " is running");
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println(name + " has been Stopped.");
+    }
+
+    public void stopThread() {
+        exitThread = true;
+    }
 }

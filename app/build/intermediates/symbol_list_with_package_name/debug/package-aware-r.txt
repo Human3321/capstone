@@ -998,6 +998,7 @@ id topPanel
 id transitionToEnd
 id transitionToStart
 id triangle
+id txtView_json
 id uniform
 id up
 id useLogo
