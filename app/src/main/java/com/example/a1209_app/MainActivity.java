@@ -68,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 String str_btn_vib = btn_set_vib.getText().toString(); // 진동 알림 설정 버튼의 텍스트 변경
 
                 // 진동알림 ON -> OFF
-                if(str_btn_vib.equals("켜짐")){
-                    btn_set_vib.setText("꺼짐");
+                if(str_btn_vib.equals("ON")){
+                    btn_set_vib.setText("OFF");
 
                     // 버튼 클릭시 애니메이션
                     ValueAnimator animator1 = ObjectAnimator.ofFloat(btn_set_vib, "translationX", 100f,150f,0f); // values 수정 필요
@@ -84,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 // 진동알림 OFF -> ON
-                else if(str_btn_vib.equals("꺼짐")){
-                    btn_set_vib.setText("켜짐");
+                else if(str_btn_vib.equals("OFF")){
+                    btn_set_vib.setText("ON");
 
                     // 버튼 클릭시 애니메이션
                     ValueAnimator animator2 = ObjectAnimator.ofFloat(btn_set_vib, "translationX", 100f,150f,0f);
@@ -110,10 +110,10 @@ public class MainActivity extends AppCompatActivity {
                 String str_btn = btn_set_use.getText().toString(); // 어플 설정 버튼의 텍스트
                 TextView txt = findViewById(R.id.textView); // 어플 설정 버튼 밑 텍스트뷰
 
-                if(str_btn.equals("켜짐")){ // 클릭 -> 실시간 탐지 OFF
+                if(str_btn.equals("ON")){ // 클릭 -> 실시간 탐지 OFF
 
                     // 버튼 및 텍스트 뷰의 텍스트 변경
-                    btn_set_use.setText("꺼짐");
+                    btn_set_use.setText("OFF");
                     txt.setText("실시간 탐지가 꺼졌습니다.");
 
                     // 버튼 색 변경 (parseColor 때문에 어플 강제종료 돼서 주석처리 해놓음)
@@ -126,13 +126,13 @@ public class MainActivity extends AppCompatActivity {
                     use_set = false;
 
                 }
-                else if(str_btn.equals("꺼짐")){ // 클릭 -> 실시간 탐지 ON
+                else if(str_btn.equals("OFF")){ // 클릭 -> 실시간 탐지 ON
 
                     // + 휴대폰 권한 받아오기
                     onCheckPermission();
 
                     // 버튼 및 텍스트 뷰의 텍스트 변경
-                    btn_set_use.setText("켜짐");
+                    btn_set_use.setText("ON");
                     txt.setText("실시간 탐지 중입니다.");
 
                     // 버튼 색 변경 (parseColor 때문에 어플 강제종료 돼서 주석처리 해놓음)
